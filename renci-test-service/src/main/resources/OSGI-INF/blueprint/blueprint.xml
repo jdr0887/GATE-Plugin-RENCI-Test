@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0" default-activation="lazy">
+
+  <cm:property-placeholder persistent-id="org.renci.gate.plugin.test" update-strategy="reload">
+    <cm:default-properties>
+      <cm:property name="collectorHost" value="biodev1.its.unc.edu" />
+      <cm:property name="activeQueues" value="serial" />
+      <cm:property name="username" value="jdr0887" />
+    </cm:default-properties>
+  </cm:property-placeholder>
+
+  <bean id="serialQueue" class="org.renci.jlrm.Queue">
+    <property name="name" value="serial" />
+    <property name="weight" value="1" />
+    <property name="maxJobLimit" value="8" />
+    <property name="maxMultipleJobsToSubmit" value="3" />
+    <property name="pendingTime" value="1440" />
+    <property name="runTime" value="2880" />
+  </bean>
+
+  <bean id="site" class="org.renci.jlrm.Site">
+    <property name="submitHost" value="152.54.9.47" />
+    <property name="maxTotalPending" value="2" />
+    <property name="maxTotalRunning" value="6" />
+    <property name="name" value="Test" />
+    <property name="project" value="TEST" />
+    <property name="username" value="${username}" />
+    <property name="queueInfoMap">
+      <map>
+        <entry key="serial" value-ref="serialQueue" />
+      </map>
+    </property>
+  </bean>
+
+  <bean id="testGATEService" class="org.renci.gate.plugin.test.TestGATEService">
+    <property name="site" ref="site" />
+    <property name="collectorHost" value="${collectorHost}" />
+    <property name="activeQueues" value="${activeQueues}" />
+    <cm:managed-properties persistent-id="org.renci.gate.plugin.test" update-strategy="container-managed" />
+  </bean>
+
+  <service ref="testGATEService" interface="org.renci.gate.GATEService" />
+
+</blueprint>
