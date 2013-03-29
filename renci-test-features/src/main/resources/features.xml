@@ -1,7 +1,7 @@
 <features name="gate-plugin-renci-test-${project.version}">
 
   <feature name="gate-plugin-renci-test" version="${project.version}" resolver="(obr)">
-    <bundle>mvn:org.renci.gate.plugin.renci.test/renci-test-service/${project.version}</bundle>
+    <bundle>mvn:org.renci.gate.plugins.renci.test/renci-test-service/${project.version}</bundle>
   </feature>
 
 </features>
