@@ -3,6 +3,7 @@ package org.renci.gate.plugin.test;
 import java.util.Map;
 
 import org.renci.gate.AbstractGATEService;
+import org.renci.gate.GATEException;
 import org.renci.gate.GlideinMetric;
 import org.renci.jlrm.Queue;
 import org.slf4j.Logger;
@@ -21,12 +22,12 @@ public class TestGATEService extends AbstractGATEService {
     }
 
     @Override
-    public Map<String, GlideinMetric> lookupMetrics() {
+    public Map<String, GlideinMetric> lookupMetrics() throws GATEException {
         return null;
     }
 
     @Override
-    public void createGlidein(Queue queue) {
+    public void createGlidein(Queue queue) throws GATEException {
         logger.info("ENTERING createGlidein(Queue)");
         if (!getActiveQueues().contains(queue.getName())) {
             logger.warn("queue name is not in active queue list...see etc/org.renci.gate.plugin.killdevil.cfg");
@@ -35,13 +36,13 @@ public class TestGATEService extends AbstractGATEService {
     }
 
     @Override
-    public void deleteGlidein(Queue queue) {
+    public void deleteGlidein(Queue queue) throws GATEException {
         logger.info("ENTERING deleteGlidein(Queue)");
 
     }
 
     @Override
-    public void deletePendingGlideins() {
+    public void deletePendingGlideins() throws GATEException {
     }
 
 }
