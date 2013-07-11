@@ -27,6 +27,12 @@ public class TestGATEService extends AbstractGATEService {
     }
 
     @Override
+    public Boolean isValid() throws GATEException {
+        logger.info("ENTERING isValid()");
+        return true;
+    }
+
+    @Override
     public void createGlidein(Queue queue) throws GATEException {
         logger.info("ENTERING createGlidein(Queue)");
         if (!getActiveQueues().contains(queue.getName())) {
