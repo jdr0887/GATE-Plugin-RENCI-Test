@@ -1,5 +1,6 @@
 package org.renci.gate.plugin.test;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.renci.gate.AbstractGATEService;
@@ -23,6 +24,15 @@ public class TestGATEService extends AbstractGATEService {
 
     @Override
     public Map<String, GlideinMetric> lookupMetrics() throws GATEException {
+        logger.info("ENTERING lookupMetrics()");
+        Map<String, GlideinMetric> metricsMap = new HashMap<String, GlideinMetric>();
+
+        //stub out the metricsMap
+        Map<String, Queue> queueInfoMap = getSite().getQueueInfoMap();
+        for (String key : queueInfoMap.keySet()) {
+            Queue queue = queueInfoMap.get(key);
+            metricsMap.put(queue.getName(), new GlideinMetric(0, 0, queue.getName()));
+        }
         return null;
     }
 
