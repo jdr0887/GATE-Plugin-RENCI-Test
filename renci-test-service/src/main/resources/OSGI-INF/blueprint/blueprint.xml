@@ -26,10 +26,10 @@
     <property name="name" value="Test" />
     <property name="project" value="TEST" />
     <property name="username" value="${username}" />
-    <property name="queueInfoMap">
-      <map>
-        <entry key="serial" value-ref="serialQueue" />
-      </map>
+    <property name="queueList">
+      <list>
+        <ref component-id="serialQueue" />
+      </list>
     </property>
   </bean>
 
