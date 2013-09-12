@@ -7,22 +7,22 @@
       <cm:property name="collectorHost" value="biodev1.its.unc.edu" />
       <cm:property name="activeQueues" value="serial" />
       <cm:property name="username" value="jdr0887" />
+      <cm:property name="maxPending" value="2" />
+      <cm:property name="maxRunning" value="10" />
     </cm:default-properties>
   </cm:property-placeholder>
 
   <bean id="serialQueue" class="org.renci.jlrm.Queue">
     <property name="name" value="serial" />
     <property name="weight" value="1" />
-    <property name="maxJobLimit" value="8" />
-    <property name="maxMultipleJobsToSubmit" value="3" />
-    <property name="pendingTime" value="1440" />
+    <property name="maxPending" value="${maxPending}" />
+    <property name="maxRunning" value="${maxRunning}" />
     <property name="runTime" value="2880" />
+    <property name="numberOfProcessors" value="8" />
   </bean>
 
   <bean id="site" class="org.renci.jlrm.Site">
     <property name="submitHost" value="152.54.9.47" />
-    <property name="maxTotalPending" value="2" />
-    <property name="maxTotalRunning" value="6" />
     <property name="name" value="Test" />
     <property name="project" value="TEST" />
     <property name="username" value="${username}" />
