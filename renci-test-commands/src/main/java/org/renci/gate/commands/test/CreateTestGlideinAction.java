@@ -11,7 +11,7 @@ import org.renci.jlrm.Site;
 import org.renci.jlrm.pbs.ssh.PBSSSHJob;
 import org.renci.jlrm.pbs.ssh.PBSSSHSubmitCondorGlideinCallable;
 
-@Command(scope = "renci-blueridge", name = "create-glidein", description = "Create Glidein")
+@Command(scope = "renci-test", name = "create-glidein", description = "Create Glidein")
 public class CreateTestGlideinAction extends AbstractAction {
 
     @Option(name = "--username", required = true, multiValued = false)
@@ -33,7 +33,7 @@ public class CreateTestGlideinAction extends AbstractAction {
     @Override
     public Object doExecute() {
         Site site = new Site();
-        site.setName("BlueRidge");
+        site.setName("Test");
         site.setSubmitHost(submitHost);
         site.setUsername(username);
 
