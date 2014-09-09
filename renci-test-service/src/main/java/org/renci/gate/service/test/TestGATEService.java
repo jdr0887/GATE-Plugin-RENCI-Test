@@ -26,7 +26,7 @@ public class TestGATEService extends AbstractGATEService {
 
     @Override
     public List<GlideinMetric> lookupMetrics() throws GATEException {
-        logger.info("ENTERING lookupMetrics()");
+        logger.debug("ENTERING lookupMetrics()");
         Map<String, GlideinMetric> metricsMap = new HashMap<String, GlideinMetric>();
 
         List<Queue> queueList = getSite().getQueueList();
@@ -42,13 +42,13 @@ public class TestGATEService extends AbstractGATEService {
 
     @Override
     public Boolean isValid() throws GATEException {
-        logger.info("ENTERING isValid()");
+        logger.debug("ENTERING isValid()");
         return true;
     }
 
     @Override
     public void createGlidein(Queue queue) throws GATEException {
-        logger.info("ENTERING createGlidein(Queue)");
+        logger.debug("ENTERING createGlidein(Queue)");
         if (!getActiveQueues().contains(queue.getName())) {
             logger.warn("queue name is not in active queue list...see etc/org.renci.gate.plugin.killdevil.cfg");
             return;
@@ -57,7 +57,7 @@ public class TestGATEService extends AbstractGATEService {
 
     @Override
     public void deleteGlidein(Queue queue) throws GATEException {
-        logger.info("ENTERING deleteGlidein(Queue)");
+        logger.debug("ENTERING deleteGlidein(Queue)");
 
     }
 
