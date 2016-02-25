@@ -50,7 +50,7 @@ public class TestGATEService extends AbstractGATEService {
     public void createGlidein(Queue queue) throws GATEException {
         logger.debug("ENTERING createGlidein(Queue)");
         if (!getActiveQueues().contains(queue.getName())) {
-            logger.warn("queue name is not in active queue list...see etc/org.renci.gate.plugin.killdevil.cfg");
+            logger.warn("queue name is not in active queue list...see etc/org.renci.gate.plugin.test.cfg");
             return;
         }
     }
